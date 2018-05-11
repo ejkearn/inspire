@@ -17,7 +17,13 @@ function TodoController() {
 	function draw(todos) {
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
-		var template = ''
+		console.log(todos)
+		var template = '<ul>'
+		for (let i=0; i<todos.length; i++){
+			template+= `<li>${todos[i].description}</li>`
+		}
+		template += `</ul>`
+		document.getElementById('todo').innerHTML = template
 		//DONT FORGET TO LOOP
 	}
 
@@ -25,9 +31,9 @@ function TodoController() {
 		e.preventDefault() // <-- hey this time its a freebie don't forget this
 		// TAKE THE INFORMATION FORM THE FORM
 		var form = e.target
-		var todo = {
+		var todo = {description: form.todo.value}
 			// DONT FORGET TO BUILD YOUR TODO OBJECT
-		}
+		
 
 		//PASSES THE NEW TODO TO YOUR SERVICE
 		//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
@@ -49,5 +55,5 @@ function TodoController() {
 	}
 
 	// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
-
+getTodos()
 }

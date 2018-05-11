@@ -8,7 +8,7 @@ function QuoteController(){
 	}
 	function drawQuote(quote){
 		
-		document.getElementById('quote').innerHTML = `${quote.quote} By: ${quote.author}`
+		document.getElementById('quote').innerText = `${quote.quote} By: ${quote.author}`
 	}
 		
 getQuote()
