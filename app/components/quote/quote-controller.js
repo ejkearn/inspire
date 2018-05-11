@@ -1,8 +1,15 @@
 function QuoteController(){
 
-	var qs = new QuoteService()
+	var quoteService = new QuoteService()
 
-	qs.getQuote(function(quote){
-		console.log('What is the quote', quote)
-	})
+
+	function getQuote(){
+		quoteService.getQuote(drawQuote)
+	}
+	function drawQuote(quote){
+		
+		document.getElementById('quote').innerHTML = `${quote.quote} By: ${quote.author}`
+	}
+		
+getQuote()
 }

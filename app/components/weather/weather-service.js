@@ -10,7 +10,7 @@ function WeatherService() {
 			// HEY FUN FACT 
 			// Have you ever wanted to know the temperature measured in kelvin?
 			// You should probably convert the temperature data
-			callWhenDone(res);
+			callWhenDone(res.main.temp);
 		})
 	}
 }
