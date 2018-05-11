@@ -13,6 +13,7 @@ function TodoService() {
 		$.get(baseUrl)
 			.then(function (res) { // <-- WHY IS THIS IMPORTANT????
 				console.log(res.data)
+				todoList = res.data
 				cb(res.data)
 			})
 			.fail(logError)
@@ -40,25 +41,47 @@ function TodoService() {
 	this.toggleTodoStatus = function (todoId, cb) {
 		// MAKE SURE WE THINK THIS ONE THROUGH
 		//STEP 1: Find the todo by its index **HINT** todoList
+		var editedTodo = {}
+		for (let i=0; i<todoList.length; i++){
+			var todo = todoList[i] 
+			if (todo._id == todoId){
+				editedTodo = todo
+			}
+		}
+		console.log(editedTodo)
 
 		//STEP 2: Change the completed flag to the opposite of what is is **HINT** todo.completed = !todo.completed
 
+		editedTodo.completed = !editedTodo.completed
+		console.log(editedTodo)
 		//STEP 3: Here is that weird Ajax request because $.put doesn't exist
 		$.ajax({
 			method: 'PUT',
 			contentType: 'application/json',
-			url: baseUrl + '/' + todoId,
-			data: JSON.stringify(5) //CHANGE THE 5!!!
+			url: baseUrl + todoId,
+			data: JSON.stringify(editedTodo) //CHANGE THE 5!!!
 		})
 			.then(function (res) {
-				//DO YOU WANT TO DO ANYTHING WITH THIS?
+				cb(res)
 			})
 			.fail(logError)
 	}
 
-	this.removeTodo = function () {
+	this.removeTodo = function (todoId, cb) {
 		// Umm this one is on you to write.... It's also unique, like the ajax call above. The method is a DELETE
+		$.ajax({
+			method: 'DELETE',
+			
+			url: baseUrl + todoId,
 		
+		})
+			.then(function (res) {
+				debugger
+				cb(res.data)
+			})
+			.fail(logError)
 	}
+		
+	
 
 }

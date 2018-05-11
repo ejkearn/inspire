@@ -20,11 +20,20 @@ function TodoController() {
 		console.log(todos)
 		var template = '<ul>'
 		for (let i=0; i<todos.length; i++){
-			template+= `<li>${todos[i].description}</li>`
+			var todo = todos[i]
+			if (!todo.completed){
+			template+= `<li>${todo.description}<button onclick="app.controllers.todoController.deleteTodo('${todo._id}')">delete</button><button onclick="app.controllers.todoController.toggleTodoStatus('${todos[i]._id}')">done</button></li>`
+			}else{
+				template+= `<li><del>${todo.description}</del><button onclick="app.controllers.todoController.deleteTodo('${todo._id}')">delete</button><button onclick="app.controllers.todoController.toggleTodoStatus('${todos[i]._id}')">done</button></li>`
+			}
 		}
 		template += `</ul>`
 		document.getElementById('todo').innerHTML = template
 		//DONT FORGET TO LOOP
+	}
+
+	this.deleteTodo = function deleteTodo (id) {
+		todoService.removeTodo(id, getTodos)
 	}
 
 	this.addTodoFromForm = function (e) {
@@ -39,6 +48,7 @@ function TodoController() {
 		//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
 		//YOU SHOULDN'T NEED TO CHANGE THIS
 		todoService.addTodo(todo, getTodos)
+		
 		                         //^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
 	}
 
