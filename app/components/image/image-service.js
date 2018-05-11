@@ -11,4 +11,16 @@ function ImageService() {
 			callWhenDone(res.url)
 		})
 	}
+
+		function getTime(){
+		var d = new Date();
+		var time = d.toLocaleTimeString().slice(0,4);
+		document.getElementById('time').innerText = time
+	}
+
+	window.setInterval(function(){
+		getTime()
+	}, 5000)
+getTime()
+
 }

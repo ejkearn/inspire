@@ -12,7 +12,7 @@ function TodoService() {
 	this.getTodos = function (cb) {
 		$.get(baseUrl)
 			.then(function (res) { // <-- WHY IS THIS IMPORTANT????
-				console.log(res.data)
+				
 				todoList = res.data
 				cb(res.data)
 			})
@@ -22,7 +22,7 @@ function TodoService() {
 	this.getOneTodo = function (id, cb) {
 		$.get(baseUrl+id)
 			.then(function (res) { // <-- WHY IS THIS IMPORTANT????
-				console.log(res)
+				
 				// cb(res.data)
 			})
 			.fail(logError)
@@ -48,12 +48,12 @@ function TodoService() {
 				editedTodo = todo
 			}
 		}
-		console.log(editedTodo)
+		
 
 		//STEP 2: Change the completed flag to the opposite of what is is **HINT** todo.completed = !todo.completed
 
 		editedTodo.completed = !editedTodo.completed
-		console.log(editedTodo)
+		
 		//STEP 3: Here is that weird Ajax request because $.put doesn't exist
 		$.ajax({
 			method: 'PUT',
@@ -76,7 +76,7 @@ function TodoService() {
 		
 		})
 			.then(function (res) {
-				debugger
+			
 				cb(res.data)
 			})
 			.fail(logError)

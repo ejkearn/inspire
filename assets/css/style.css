@@ -1,3 +1,20 @@
 /* body{
     background-size: 100%;
 } */
+.imageBackground{
+    height: 100%
+}
+.niceCard{
+   
+    background: white;
+    opacity: .7;
+    
+}
+.clock{
+    font-size: 15rem;
+    
+}
+.cardText{
+    color: black;
+    opacity: 1;
+}

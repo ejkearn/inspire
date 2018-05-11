@@ -17,14 +17,24 @@ function TodoController() {
 	function draw(todos) {
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
-		console.log(todos)
+	
 		var template = '<ul>'
 		for (let i=0; i<todos.length; i++){
 			var todo = todos[i]
 			if (!todo.completed){
-			template+= `<li>${todo.description}<button onclick="app.controllers.todoController.deleteTodo('${todo._id}')">delete</button><button onclick="app.controllers.todoController.toggleTodoStatus('${todos[i]._id}')">done</button></li>`
+			template+= `<li>
+			<input type="checkbox" id="done" onchange="app.controllers.todoController.toggleTodoStatus('${todos[i]._id}')"><label for="done"></label>
+			${todo.description}
+			<button class="btn-danger" onclick="app.controllers.todoController.deleteTodo('${todo._id}')">X</button>
+			
+			</li>`
 			}else{
-				template+= `<li><del>${todo.description}</del><button onclick="app.controllers.todoController.deleteTodo('${todo._id}')">delete</button><button onclick="app.controllers.todoController.toggleTodoStatus('${todos[i]._id}')">done</button></li>`
+				template+= `<li>
+				<input type="checkbox" id="done" onchange="app.controllers.todoController.toggleTodoStatus('${todos[i]._id}')" checked><label for="done"></label>
+				<del>${todo.description}</del>
+				<button class="btn-danger" onclick="app.controllers.todoController.deleteTodo('${todo._id}')">X</button>
+				
+				</li>`
 			}
 		}
 		template += `</ul>`
@@ -43,11 +53,13 @@ function TodoController() {
 		var todo = {description: form.todo.value}
 			// DONT FORGET TO BUILD YOUR TODO OBJECT
 		
+		
 
 		//PASSES THE NEW TODO TO YOUR SERVICE
 		//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
 		//YOU SHOULDN'T NEED TO CHANGE THIS
 		todoService.addTodo(todo, getTodos)
+		form.reset()
 		
 		                         //^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
 	}
