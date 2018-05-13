@@ -11,40 +11,41 @@
 <body id="body" class="d-flex align-items-stretch h-100">
 	<section class="container h-100" id="imageBackground">
 		<div class="row">
-			<div class="col-12">
+			<div class="col-6">
 				<div id="weather" class="niceCard d-inline-flex">
 					<div class="cardText">
 					Your Weather Template
 					</div>
 				</div>
 			</div>
-			<div class="col-12 text-center">
-				<div class="niceCard clock d-inline-flex">
-					<div id="time" class="cardText">
-
-					</div>
-
-				</div>
-			</div>
-			<div class="col">
+			
+			<div class="col-6">
 				<div id="quote" class="niceCard d-inline-flex">
 					The Quote
 				</div>
 			</div>
-			<div class="col">
-				<div>
-					<form onsubmit="app.controllers.todoController.addTodoFromForm(event)">
-						<input type="text" name="todo" placeholder="Your Todo">
-						<button type="submit">Submit</button>
-					</form>
-					<div class="row niceCard d-inline-flex">
-						<div class="col-12">
-					A Todo List
-					</div>
-					<div class="col">
-					<div id="todo" class="">
-					</div></div></div>
+								<div class="col-4 niceCard">
+									<div>
+										<form onsubmit="app.controllers.todoController.addTodoFromForm(event)">
+											<input class="form-control" type="text" name="todo" placeholder="Your Todo">
+											<button type="submit">Submit</button>
+										</form>
+										<div class="row d-inline-flex">
+											<div class="col-12">
+										A Todo List
+										</div>
+										<div class="col">
+										<div id="todo" class="">
+										</div></div></div>
+					
+					
+									</div>
+								</div>
+			<div class="col-8 text-center">
+				<div class="niceCard clock d-inline-flex">
+					<div id="time" class="cardText">
 
+					</div>
 
 				</div>
 			</div>
