@@ -32,7 +32,7 @@ function TodoService() {
 		return localStorage.getItem('userName')
 	}
 	this.deleteName = function deleteName(cb){
-		localStorage.setItem('userName', "");
+		localStorage.removeItem('userName')
 		cb()
 	}
 
@@ -46,9 +46,10 @@ function TodoService() {
 				cb(res.data)
 			})
 			.fail(logError)
-			
 		}
+		cb(todoList)
 	}
+
 
 	this.getOneTodo = function (id, cb) {
 		$.get(baseUrl+userName+'/todos/' + id)
