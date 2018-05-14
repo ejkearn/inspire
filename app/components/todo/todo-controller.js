@@ -11,6 +11,7 @@ function TodoController() {
 	// Use this getTodos function as your callback for all other edits
 	function getTodos() {
 		//FYI DONT EDIT ME :)
+		debugger
 		todoService.getTodos(draw)
 	}
 
