@@ -5,16 +5,23 @@
     height: 100%
 }
 .niceCard{
-   
-    background: white;
-    opacity: .7;
-    
+   padding: 1rem;
+    background: rgba(0,0,0,.3);
+    /* opacity: .3; */
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    color: lightgray
 }
 .clock{
-    font-size: 15rem;
+    font-size: 13rem;
     
 }
+.btn-custom{
+    opacity: .5;
+    font-size: .5rem;
+    padding-left: 2;
+    padding-right: 2;
+}
 .cardText{
-    color: black;
+    color: lightgray;
     opacity: 1;
 }

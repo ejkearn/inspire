@@ -14,7 +14,13 @@ function ImageService() {
 
 		function getTime(){
 		var d = new Date();
-		var time = d.toLocaleTimeString().slice(0,4);
+		console.log(d.toLocaleTimeString().slice(1,2))
+		if (d.toLocaleTimeString().slice(1,2) == ":"){
+			var time = '0' + d.toLocaleTimeString().slice(0,4);
+		} else {
+
+			var time = d.toLocaleTimeString().slice(0,5);
+		}
 		document.getElementById('time').innerText = time
 	}
 
