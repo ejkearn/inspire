@@ -38,13 +38,16 @@ function TodoService() {
 
 
 	this.getTodos = function (cb) {
-		$.get(baseUrl+userName+'/todos/')
+		if (userName){
+			$.get(baseUrl+userName+'/todos/')
 			.then(function (res) { // <-- WHY IS THIS IMPORTANT????
-
+				
 				todoList = res.data
 				cb(res.data)
 			})
 			.fail(logError)
+			
+		}
 	}
 
 	this.getOneTodo = function (id, cb) {
