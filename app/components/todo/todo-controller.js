@@ -11,13 +11,16 @@ function TodoController() {
 	// Use this getTodos function as your callback for all other edits
 	function getTodos() {
 		//FYI DONT EDIT ME :)
-		debugger
+		
 		todoService.getTodos(draw)
 	}
+	var numOfTodos = 0;
 
 	function draw(todos) {
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
+		if (todos){numOfTodos = todos.length}
+		
 		var template = ''
 		var formTemplate = ''
 		if (!todoService.loadName()) {
@@ -32,10 +35,11 @@ function TodoController() {
 	</form>`
 
 			template = `<div>
-	${todoService.getName()}'s To Do List: <button class="btn-info" onclick="app.controllers.todoController.deleteName()">New Name</button></div>
+	${todoService.getName()}'s To Do List of ${numOfTodos} todos: <button class="btn-info" onclick="app.controllers.todoController.deleteName()">New Name</button></div>
 	<ul>`
 			for (let i = 0; i < todos.length; i++) {
 				var todo = todos[i]
+				
 				if (!todo.completed) {
 					template += `<li>
 			<input type="checkbox" id="done" onchange="app.controllers.todoController.toggleTodoStatus('${todos[i]._id}')"><label for="done"></label>
@@ -61,18 +65,20 @@ function TodoController() {
 	}
 
 	this.deleteName = function deleteName() {
+		
 		todoService.deleteName(draw)
 	}
 
 	this.newName = function NewName(e) {
 		e.preventDefault()
-		debugger
+		
 		var newName = e.target.newName.value
 		
 		todoService.newName(newName, getTodos)
 	}
 
 	this.deleteTodo = function deleteTodo(id) {
+	  numOfTodos --		
 		todoService.removeTodo(id, getTodos)
 	}
 
@@ -80,6 +86,7 @@ function TodoController() {
 		e.preventDefault() // <-- hey this time its a freebie don't forget this
 		// TAKE THE INFORMATION FORM THE FORM
 		var form = e.target
+		numOfTodos ++
 		var todo = { description: form.todo.value }
 		// DONT FORGET TO BUILD YOUR TODO OBJECT
 
